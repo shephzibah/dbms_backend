@@ -179,7 +179,7 @@ def book_flight():
         execute_query(book_query, book_params)
 
         # Get the booking ID for the response
-        booking_id_query = "SELECT LAST_INSERT_ID() as booking_id"
+        booking_id_query = "SELECT * FROM booking ORDER BY booking_id DESC LIMIT 1;"
         booking_id_result = execute_query(booking_id_query)
 
         return jsonify({'success': True, 'message': 'Booking successful', 'booking_id': booking_id_result[0]['booking_id']})
